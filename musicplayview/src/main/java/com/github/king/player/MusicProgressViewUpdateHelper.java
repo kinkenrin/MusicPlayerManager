@@ -28,7 +28,7 @@ public class MusicProgressViewUpdateHelper extends Handler {
         removeMessages(CMD_REFRESH_PROGRESS_VIEWS);
     }
 
-    public MusicProgressViewUpdateHelper(Context context,Callback callback) {
+    public MusicProgressViewUpdateHelper(Context context, Callback callback) {
         this.mContext = context;
         this.callback = callback;
         this.intervalPlaying = UPDATE_INTERVAL_PLAYING;
@@ -45,7 +45,10 @@ public class MusicProgressViewUpdateHelper extends Handler {
     public void handleMessage(@NonNull Message msg) {
         super.handleMessage(msg);
         if (msg.what == CMD_REFRESH_PROGRESS_VIEWS) {
-            queueNextRefresh(refreshProgressViews());
+            int interval = refreshProgressViews();
+            if (interval != -1) {
+                queueNextRefresh(interval);
+            }
         }
     }
 
@@ -56,7 +59,8 @@ public class MusicProgressViewUpdateHelper extends Handler {
         callback.onUpdateProgressViews(progressMillis, totalMillis);
 
         if (!MusicPalyManager.getInstance(mContext).isPlaying()) {
-            return intervalPaused;
+//            return intervalPaused;
+            return -1;
         }
 
         final int remainingMillis = intervalPlaying - progressMillis % intervalPlaying;

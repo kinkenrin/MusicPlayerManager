@@ -41,12 +41,7 @@ public class MusicPalyManager implements Playback.PlaybackCallbacks {
     public void play() {
         synchronized (this) {
             if (!playback.isPlaying()) {
-                /*if (!playback.isInitialized()) {
-                    //初始化失败
-//                    playSongAt(getPosition());
-                } else {*/
-                    playback.start();
-//                }
+                playback.start();
             }
         }
     }
@@ -87,11 +82,9 @@ public class MusicPalyManager implements Playback.PlaybackCallbacks {
 
     @Override
     public void onTrackWentToNext() {
-
     }
 
     @Override
     public void onTrackEnded() {
-
     }
 }

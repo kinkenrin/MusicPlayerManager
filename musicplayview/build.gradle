@@ -24,6 +24,26 @@ android {
 
 }
 
+ext {
+    yourSiteUrl = 'https://github.com/kinkenrin/MusicPlayerManager'
+    yourGitUrl = 'https://github.com/kinkenrin/MusicPlayerManager'
+    YourIssueTrackerUrl = 'https://github.com/kinkenrin/MusicPlayerManager/issues'
+
+    yourProName = 'MusicPlayerManager'
+    yourProDesc = 'Android Library'
+
+    yourId = 'alanking'
+    yourName = 'alanking'
+    yourEmail = 'jinxianlun@gmial.com'
+
+    yourGroup = 'com.github.kinkenrin'
+    yourArtifactId = 'musicplayview'
+    yourVersion = '1.0'
+
+    yourBintrayUserPath = './local.properties'
+}
+apply from: '../bintrayUpload.gradle'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

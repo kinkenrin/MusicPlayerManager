@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -17,6 +18,8 @@ import com.github.king.player.MusicProgressViewUpdateHelper;
 import com.github.king.player.MusicUtil;
 
 /**
+ * 播放器控件
+ *
  * @author Created by jinxl on 2018/10/17.
  */
 public class MusicPlayView extends LinearLayout implements MusicProgressViewUpdateHelper.Callback {
@@ -86,12 +89,13 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
 
     private void toggleMusicPlayer() {
         if (!isPlaying) {
-            if (setDataSource(mDataSource)) {
-                playMusic();
-                progressViewUpdateHelper.start();
-            }
+//            if (setDataSource(mDataSource)) {
+            playMusic();
+            progressViewUpdateHelper.start();
+//            }
         } else {
             pauseMusic();
+            progressViewUpdateHelper.stop();
         }
 
         updatePlayPauseDrawableState(true);
@@ -140,10 +144,14 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
 
     @Override
     public void onUpdateProgressViews(int progress, int total) {
+        if (total <= progress) {
+            progress = total;
+            updatePlayPauseDrawableState(true);
+            isPlaying = !isPlaying;
+        }
         progressSlider.setMax(total);
         progressSlider.setProgress(progress);
         songTotalTime.setText("/" + MusicUtil.getReadableDurationString(total));
         songCurrentProgress.setText(MusicUtil.getReadableDurationString(progress));
     }
-
 }
