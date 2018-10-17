@@ -94,13 +94,21 @@ public class PlayPauseDrawable extends Drawable {
         leftPauseBar.moveTo(0f, 0f);
         leftPauseBar.lineTo(firstBarTopLeft, -pauseBarHeight);
         leftPauseBar.lineTo(barWidth, -pauseBarHeight);
-        leftPauseBar.lineTo(barWidth, 0f);
+        if (isPlay) {
+            leftPauseBar.lineTo(barWidth+2, 0f);
+        } else {
+            leftPauseBar.lineTo(barWidth, 0f);
+        }
         leftPauseBar.close();
 
         // Draw the right pause bar. The right pause bar transforms into the
         // bottom half of the play button triangle by animating the position of the
         // rectangle's top right coordinate and expanding its bottom width.
-        rightPauseBar.moveTo(barWidth + barDist, 0f);
+        if (isPlay) {
+            rightPauseBar.moveTo(barWidth + barDist-1, 0f);
+        } else {
+            rightPauseBar.moveTo(barWidth + barDist, 0f);
+        }
         rightPauseBar.lineTo(barWidth + barDist, -pauseBarHeight);
         rightPauseBar.lineTo(secondBarTopRight, -pauseBarHeight);
         rightPauseBar.lineTo(2 * barWidth + barDist, 0f);
