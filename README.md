@@ -1,7 +1,7 @@
 # MusicPlayerManager
 A customer view for android Music play
 
-
+![image](https://raw.githubusercontent.com/kinkenrin/MusicPlayerManager/master/img/pic.gif)
 
 ## Using
 1、Using gradle dependency:compile 'com.github.kinkenrin:musicplayview:1.0'
