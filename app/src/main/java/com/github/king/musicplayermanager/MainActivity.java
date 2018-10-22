@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mpv_test = findViewById(R.id.mpv_test);
-        mpv_test.setDataSource("/sdcard/netease/cloudmusic/Music/Ace组合 - 楚地无歌.mp3");
+        mpv_test.setEnable(true);
+        mpv_test.setDataSource("/sdcard/智齿客服/testvoice.wav");
     }
 
     @Override

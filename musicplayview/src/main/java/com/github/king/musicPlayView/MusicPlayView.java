@@ -27,6 +27,7 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
     private MusicProgressViewUpdateHelper progressViewUpdateHelper;
     PlayPauseDrawable playPauseDrawable;
     boolean isPlaying = false;
+    boolean mIsEnable = true;
     String mDataSource;
 
     ImageButton ib_playBtn;
@@ -153,5 +154,11 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
         progressSlider.setProgress(progress);
         songTotalTime.setText("/" + MusicUtil.getReadableDurationString(total));
         songCurrentProgress.setText(MusicUtil.getReadableDurationString(progress));
+    }
+
+    public void setEnable(boolean enable) {
+        mIsEnable = enable;
+        progressSlider.setEnabled(mIsEnable);
+        ib_playBtn.setEnabled(mIsEnable);
     }
 }
