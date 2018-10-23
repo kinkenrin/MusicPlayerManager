@@ -21,7 +21,7 @@ public class MusicPalyManager implements Playback.PlaybackCallbacks {
         if (instance == null) {
             synchronized (MusicPalyManager.class) {
                 if (instance == null) {
-                    instance = new MusicPalyManager(context);
+                    instance = new MusicPalyManager(context.getApplicationContext());
                 }
             }
         }
