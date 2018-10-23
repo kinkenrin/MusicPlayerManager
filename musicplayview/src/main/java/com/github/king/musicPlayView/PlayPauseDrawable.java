@@ -17,8 +17,6 @@ import android.support.annotation.NonNull;
 import android.util.Property;
 import android.view.animation.DecelerateInterpolator;
 
-import com.github.king.musicplayview.R;
-
 
 public class PlayPauseDrawable extends Drawable {
     private static final long PLAY_PAUSE_ANIMATION_DURATION = 250;
@@ -95,7 +93,7 @@ public class PlayPauseDrawable extends Drawable {
         leftPauseBar.lineTo(firstBarTopLeft, -pauseBarHeight);
         leftPauseBar.lineTo(barWidth, -pauseBarHeight);
         if (isPlay) {
-            leftPauseBar.lineTo(barWidth+2, 0f);
+            leftPauseBar.lineTo(barWidth + 2, 0f);
         } else {
             leftPauseBar.lineTo(barWidth, 0f);
         }
@@ -105,7 +103,7 @@ public class PlayPauseDrawable extends Drawable {
         // bottom half of the play button triangle by animating the position of the
         // rectangle's top right coordinate and expanding its bottom width.
         if (isPlay) {
-            rightPauseBar.moveTo(barWidth + barDist-1, 0f);
+            rightPauseBar.moveTo(barWidth + barDist - 1, 0f);
         } else {
             rightPauseBar.moveTo(barWidth + barDist, 0f);
         }

@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.github.king.musicplayview.R;
 import com.github.king.player.MusicPalyManager;
 import com.github.king.player.MusicProgressViewUpdateHelper;
 import com.github.king.player.MusicUtil;
