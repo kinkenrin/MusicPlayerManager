@@ -153,8 +153,9 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
     public void onUpdateProgressViews(int progress, int total) {
         if (total <= progress) {
             progress = total;
-            updatePlayPauseDrawableState(true);
-            isPlaying = !isPlaying;
+//            updatePlayPauseDrawableState(true);
+            playPauseDrawable.setPlay(true);
+            isPlaying = false;
         }
         progressSlider.setMax(total);
         progressSlider.setProgress(progress);
