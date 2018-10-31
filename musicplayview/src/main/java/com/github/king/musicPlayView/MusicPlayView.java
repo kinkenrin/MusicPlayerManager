@@ -54,6 +54,7 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
         songCurrentProgress = findViewById(R.id.songCurrentProgress);
         songTotalTime = findViewById(R.id.songTotalTime);
         playPauseDrawable = new PlayPauseDrawable(getContext());
+
         ib_playBtn.setImageDrawable(playPauseDrawable);
         ib_playBtn.setColorFilter(Color.parseColor("#888E96"), PorterDuff.Mode.SRC_IN);
 
@@ -88,7 +89,7 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
         post(new Runnable() {
             @Override
             public void run() {
-                updatePlayPauseDrawableState(false);
+                playPauseDrawable.setPlay(false);
             }
         });
     }
