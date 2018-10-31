@@ -56,7 +56,7 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
         playPauseDrawable = new PlayPauseDrawable(getContext());
         ib_playBtn.setImageDrawable(playPauseDrawable);
         ib_playBtn.setColorFilter(Color.parseColor("#888E96"), PorterDuff.Mode.SRC_IN);
-        playPauseDrawable.setPlay(false);
+
         progressViewUpdateHelper = new MusicProgressViewUpdateHelper(getContext(), this);
         progressSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -82,6 +82,13 @@ public class MusicPlayView extends LinearLayout implements MusicProgressViewUpda
             @Override
             public void onClick(View v) {
                 toggleMusicPlayer();
+            }
+        });
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                updatePlayPauseDrawableState(false);
             }
         });
     }
