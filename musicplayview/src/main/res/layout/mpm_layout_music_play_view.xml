@@ -20,9 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_weight="1"
         android:maxHeight="4dp"
         android:minHeight="4dp"
+        android:padding="7dp"
         android:progressDrawable="@drawable/mpm_po_seekbar"
         android:thumb="@drawable/mpm_icon_play_seek_point" />
 
@@ -31,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:text="0:00"
         android:textColor="#333333"
-        android:textSize="12sp"
-        tools:text="00:00" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/songTotalTime"
@@ -41,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginRight="6dp"
+        android:text="/0:00"
         android:textColor="#333333"
-        android:textSize="12sp"
-        tools:text="/15:00" />
+        android:textSize="12sp" />
 
 </LinearLayout>

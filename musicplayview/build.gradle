@@ -38,7 +38,7 @@ ext {
 
     yourGroup = 'com.github.kinkenrin'
     yourArtifactId = 'musicplayview'
-    yourVersion = '1.0.5'
+    yourVersion = '1.1.1'
 
     yourBintrayUserPath = './local.properties'
 }
