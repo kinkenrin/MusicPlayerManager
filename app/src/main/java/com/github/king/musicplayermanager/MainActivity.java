@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mpv_test = findViewById(R.id.mpv_test);
         mpv_test.setEnable(true);
-        mpv_test.setDataSource("/sdcard/智齿客服/testvoice.wav");
+        mpv_test.setDataSource("http://sobot-test.oss-cn-beijing.aliyuncs.com/pass/record/36a7403308f74eaca63c32184cc31b09/d3576afb24904b44a6e74a6cb6ea9ea1/20181030/a73c2524-dc25-11e8-bfae-6bd08da289a3.wav");
     }
 
     @Override

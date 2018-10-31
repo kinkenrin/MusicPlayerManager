@@ -1,10 +1,8 @@
 package com.github.king.player;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.audiofx.AudioEffect;
 import android.net.Uri;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
@@ -12,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.danikula.videocache.HttpProxyCacheServer;
 import com.github.king.player.playback.Playback;
 
 /**
@@ -28,6 +27,7 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
     private Playback.PlaybackCallbacks callbacks;
 
     private boolean mIsInitialized = false;
+    private HttpProxyCacheServer mProxyCacheServer;
 
     /**
      * Constructor of <code>MultiPlayer</code>
@@ -35,6 +35,7 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
     public MultiPlayer(final Context context) {
         this.context = context;
         mCurrentMediaPlayer.setWakeMode(context, PowerManager.PARTIAL_WAKE_LOCK);
+
     }
 
     /**
@@ -69,6 +70,12 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
             player.setOnPreparedListener(null);
             if (path.startsWith("content://")) {
                 player.setDataSource(context, Uri.parse(path));
+            } else if (path.startsWith("http")) {
+                if (mProxyCacheServer == null) {
+                    mProxyCacheServer = new HttpProxyCacheServer(context);
+                }
+                String proxyUrl = mProxyCacheServer.getProxyUrl(path);
+                player.setDataSource(context,Uri.parse(proxyUrl));
             } else {
                 player.setDataSource(path);
             }

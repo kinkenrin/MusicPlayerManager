@@ -38,7 +38,7 @@ ext {
 
     yourGroup = 'com.github.kinkenrin'
     yourArtifactId = 'musicplayview'
-    yourVersion = '1.1.1'
+    yourVersion = '1.1.4'
 
     yourBintrayUserPath = './local.properties'
 }
@@ -48,6 +48,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     compileOnly 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.danikula:videocache:2.7.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
