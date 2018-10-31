@@ -27,7 +27,6 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
     private Playback.PlaybackCallbacks callbacks;
 
     private boolean mIsInitialized = false;
-    private HttpProxyCacheServer mProxyCacheServer;
 
     /**
      * Constructor of <code>MultiPlayer</code>
@@ -71,11 +70,8 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
             if (path.startsWith("content://")) {
                 player.setDataSource(context, Uri.parse(path));
             } else if (path.startsWith("http")) {
-                if (mProxyCacheServer == null) {
-                    mProxyCacheServer = new HttpProxyCacheServer(context);
-                }
-                String proxyUrl = mProxyCacheServer.getProxyUrl(path);
-                player.setDataSource(context,Uri.parse(proxyUrl));
+                String proxyUrl = MusicPalyManager.getInstance(context).getProxyCacheServer().getProxyUrl(path);
+                player.setDataSource(context, Uri.parse(proxyUrl));
             } else {
                 player.setDataSource(path);
             }

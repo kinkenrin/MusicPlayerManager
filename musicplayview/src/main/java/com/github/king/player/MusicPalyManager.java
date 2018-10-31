@@ -2,7 +2,10 @@ package com.github.king.player;
 
 import android.content.Context;
 
+import com.danikula.videocache.HttpProxyCacheServer;
 import com.github.king.player.playback.Playback;
+
+import java.io.File;
 
 /**
  * @author Created by jinxl on 2018/10/17.
@@ -10,11 +13,20 @@ import com.github.king.player.playback.Playback;
 public class MusicPalyManager implements Playback.PlaybackCallbacks {
 
     private static MusicPalyManager instance;
+
+    private HttpProxyCacheServer mProxyCacheServer;
+
     private MultiPlayer playback;
+
+    String VOICE_PATH = "/sdcard/MyVoiceForder/Record/workoder/voice";
 
     private MusicPalyManager(Context context) {
         playback = new MultiPlayer(context);
         playback.setCallbacks(this);
+        mProxyCacheServer = new HttpProxyCacheServer.Builder(context.getApplicationContext())
+                .cacheDirectory(new File(VOICE_PATH))
+                .maxCacheSize(1024 * 1024 * 1024)       // 1 Gb for cache
+                .build();
     }
 
     public static MusicPalyManager getInstance(Context context) {
@@ -86,5 +98,9 @@ public class MusicPalyManager implements Playback.PlaybackCallbacks {
 
     @Override
     public void onTrackEnded() {
+    }
+
+    public HttpProxyCacheServer getProxyCacheServer() {
+        return mProxyCacheServer;
     }
 }
