@@ -23,11 +23,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:maxHeight="4dp"
-        android:minHeight="4dp"
-        android:padding="7dp"
+        android:maxHeight="2dp"
+        android:minHeight="2dp"
+        android:padding="6dp"
         android:progressDrawable="@drawable/mpm_po_seekbar"
-        android:thumb="@drawable/mpm_icon_play_seek_point" />
+        android:thumb="@drawable/mpm_icon_play_seek_point"
+        android:thumbOffset="0dp" />
 
     <TextView
         android:id="@+id/songCurrentProgress"
