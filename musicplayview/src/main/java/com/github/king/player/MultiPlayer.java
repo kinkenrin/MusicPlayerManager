@@ -76,7 +76,7 @@ public class MultiPlayer implements Playback, MediaPlayer.OnErrorListener, Media
                 player.setDataSource(path);
             }
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            player.prepare();
+            player.prepareAsync();
         } catch (Exception e) {
             return false;
         }
